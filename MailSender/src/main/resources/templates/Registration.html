@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Student Registration</title>
+  <style>
+    /* General Reset */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .card {
+      background: none;
+      box-shadow: 0 4px 8px white;
+      border-radius: 8px;
+      padding: 30px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .card h3 {
+      font-size: 44px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    background-image: linear-gradient(to right, #7272d2 0%, #393765 34%, #208599 100%); /* Gradient color */
+     -webkit-background-clip: text;   
+     color: transparent; 
+      text-align: center;
+    }
+
+    .form-label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+      color: white;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .form-control:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+    }
+
+    .btn-submit {
+         background-image: linear-gradient(to right, #7272d2 0%, #393765 34%, #208599 100%); /* Gradient with stops */
+     /* Clip the background to the text */
+    color: white; 
+    transition: background-color 0.3s;
+    
+      font-size: 16px;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-left: auto;
+      margin-right: auto;
+      width:200px;
+    }
+
+    .btn-submit:hover {
+      background-color: gray;
+    }
+
+    #success-popup {
+      display: none;
+      padding: 15px;
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    h3 {
+      font-size: 50px;
+      font-weight: bold;
+      margin-bottom: 20px;
+   		color:white;
+      text-align: center;
+    }
+    h5{
+    text-align:center;
+
+    }
+  </style>
+</head>
+
+<body>
+<h3>Email Sender </h3>
+<h5>by using Spring Boot</h5>
+  <div class="container registration-form">
+    <div class="card">
+      <h3>Register Here</h3>
+
+      
+      <div id="success-popup" th:if="${param.success == 'true'}">
+    <p>Email sent successfully!</p>
+</div>
+
+      <form action="/send" method="post">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
+
+        <label for="course" class="form-label">Course</label>
+        <input type="text" class="form-control" id="course" name="course" placeholder="Enter your course" required>
+
+        <label for="education" class="form-label">Education</label>
+        <input type="text" class="form-control" id="education" name="education" placeholder="Enter your highest education qualification" required>
+
+        <label for="profession" class="form-label">Domain</label>
+        <input type="text" class="form-control" id="Domain" name="Domain" placeholder="Enter your Domain" required>
+
+        <label for="address" class="form-label">Address</label>
+        <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter your address" required></textarea>
+
+        <button type="submit" class="btn-submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+ 
+    
+  <script>
+    window.onload = function () {
+        const successPopup = document.getElementById('success-popup');
+        if (successPopup) {
+            setTimeout(() => {
+                successPopup.style.display = "none";
+            }, 3000); 
+        }
+    };
+
+
+  </script>
+</body>
+
+</html>
